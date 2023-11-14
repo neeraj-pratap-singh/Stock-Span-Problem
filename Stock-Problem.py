@@ -4,22 +4,20 @@
 # Task 2: Transverse through the prices
 # Iterate through the prices array from the second to the last day
 
-def calculate_stock_span(prices):
-    # Length of the prices array
-    n = len(prices)
+# Task 3: Initialise Span and Index
+# For each day, initialise a variable ’span’ to 1 to represent the current span and an index ‘j’ to set ‘I-1’  to start back traversal.
 
-    # Initialize the span array with zeros
-    span = [0] * n
+def calculateSpan(prices):
+    n = len(prices)  # Length of the prices array
+    span = [0] * n  # Initialize span array with zeros
+    span[0] = 1  # Span for the first day is always 1
 
-    # Set the span for the first day to 1
-    span[0] = 1
-
-    # Iterate through the prices array from the second day
+    # Iterate through the prices array starting from the second day
     for i in range(1, n):
-        span[i] = 1  # Initialize span for the current day
+        span[i] = 1  # Initialize span for the current day as 1
+        j = i - 1  # Set j to the previous day
 
-        # Traverse back to previous days to check how many days' prices were less than or equal to the current day's price
-        j = i - 1
+        # Backward traversal to find the span
         while j >= 0 and prices[j] <= prices[i]:
             span[i] += 1
             j -= 1
@@ -28,4 +26,5 @@ def calculate_stock_span(prices):
 
 # Example usage
 prices = [100, 80, 60, 70, 60, 75, 85]
-print("Stock spans:", calculate_stock_span(prices))
+print("The stock spans are:", calculateSpan(prices))
+
