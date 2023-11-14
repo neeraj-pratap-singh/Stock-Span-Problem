@@ -10,6 +10,12 @@
 # Task 4: Backward Traversal
 # Traverse backward from current day until a greater price is found or the start of the series is reached
 
+# Task 5: Calculate Span
+# Within the backward traverse loop, add the span of previous day to the current span if the current day span is greater than or equal to the previous day’s price.Update the index  ‘j’ to ‘j-span[j]’.
+
+# Task 6: Stored Calculated Span
+# Once the backward traversal is complete, store the calculated span for the current day in the spans array at index ‘i’
+
 def calculateSpan(prices):
     n = len(prices)  # Length of the prices array
     span = [0] * n  # Initialize span array with zeros
@@ -25,9 +31,11 @@ def calculateSpan(prices):
             span[i] += span[j]  # Add the span of the previous day
             j -= span[j]  # Update j to jump back by the span of day j
 
+        # Task 6: Store the calculated span for the current day
+        # This is done implicitly as we are updating span[i] in the loop
+
     return span
 
 # Example usage
 prices = [100, 80, 60, 70, 60, 75, 85]
 print("The stock spans are:", calculateSpan(prices))
-
