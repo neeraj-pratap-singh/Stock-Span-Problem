@@ -7,6 +7,9 @@
 # Task 3: Initialise Span and Index
 # For each day, initialise a variable ’span’ to 1 to represent the current span and an index ‘j’ to set ‘I-1’  to start back traversal.
 
+# Task 4: Backward Traversal
+# Traverse backward from current day until a greater price is found or the start of the series is reached
+
 def calculateSpan(prices):
     n = len(prices)  # Length of the prices array
     span = [0] * n  # Initialize span array with zeros
@@ -19,8 +22,8 @@ def calculateSpan(prices):
 
         # Backward traversal to find the span
         while j >= 0 and prices[j] <= prices[i]:
-            span[i] += 1
-            j -= 1
+            span[i] += span[j]  # Add the span of the previous day
+            j -= span[j]  # Update j to jump back by the span of day j
 
     return span
 
