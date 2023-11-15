@@ -16,6 +16,9 @@
 # Task 6: Stored Calculated Span
 # Once the backward traversal is complete, store the calculated span for the current day in the spans array at index ‘i’
 
+# Task 7: Repeat
+# Repeat steps 3-6 for the remaining days in the prices array.
+    
 def calculateSpan(prices):
     n = len(prices)  # Length of the prices array
     span = [0] * n  # Initialize span array with zeros
